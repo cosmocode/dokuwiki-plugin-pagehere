@@ -17,35 +17,40 @@ require_once DOKU_PLUGIN.'syntax.php';
 
 class syntax_plugin_pagehere extends DokuWiki_Syntax_Plugin {
     public function getType() {
-        return 'FIXME: container|baseonly|formatting|substition|protected|disabled|paragraphs';
+        return 'substition';
     }
 
     public function getPType() {
-        return 'FIXME: normal|block|stack';
+        return 'normal';
     }
 
     public function getSort() {
-        return FIXME;
+        return 133;
     }
 
 
     public function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('<FIXME>',$mode,'plugin_pagehere');
-//        $this->Lexer->addEntryPattern('<FIXME>',$mode,'plugin_pagehere');
+        $this->Lexer->addSpecialPattern('{{pagehere}}',$mode,'plugin_pagehere');
     }
-
-//    public function postConnect() {
-//        $this->Lexer->addExitPattern('</FIXME>','plugin_pagehere');
-//    }
 
     public function handle($match, $state, $pos, &$handler){
         $data = array();
-
         return $data;
     }
 
-    public function render($mode, &$renderer, $data) {
+    public function render($mode, &$R, $data) {
+        $R->info['cache'] = false;
         if($mode != 'xhtml') return false;
+
+        global $INFO;
+        global $ID;
+        $check = $INFO['ns'].':pagehere';
+        if(auth_quickaclcheck($check) < AUTH_EDIT) return;
+
+        $R->doc .= '<form class="plugin_pagehere" action="'.wl($ID).'" method="GET">';
+        $R->doc .= '<input name="pagehere" class="edit" type="text" id="page__here" />';
+        $R->doc .= '<input type="submit" value="'.$this->getLang('submit').'" class="btn" />';
+        $R->doc .= '</form>';
 
         return true;
     }

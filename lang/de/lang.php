@@ -5,7 +5,7 @@
  * @author Andreas Gohr <gohr@cosmocode.de>
  */
 
-$lang['submit'] = 'Create new Page';
+$lang['submit'] = 'Neue Seite anlegen';
 
 
 

@@ -18,12 +18,17 @@ require_once DOKU_PLUGIN.'action.php';
 class action_plugin_pagehere extends DokuWiki_Action_Plugin {
 
     public function register(Doku_Event_Handler &$controller) {
-
-       $controller->register_hook('DOKUWIKI_STARTED', 'FIXME', $this, 'handle_dokuwiki_started');
-   
+       $controller->register_hook('DOKUWIKI_STARTED', 'AFTER', $this, 'handle_dokuwiki_started');
     }
 
     public function handle_dokuwiki_started(Doku_Event &$event, $param) {
+        if(!$_REQUEST['pagehere']) return;
+
+        global $ID;
+        $ns = getNS($ID);
+        $newpage = cleanID($ns.':'.$_REQUEST['pagehere']);
+
+        send_redirect(wl($newpage,array('do'=>'edit'),true,'&'));
     }
 
 }
