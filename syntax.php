@@ -44,7 +44,7 @@ class syntax_plugin_pagehere extends DokuWiki_Syntax_Plugin {
 
         global $INFO;
         global $ID;
-        $check = $INFO['ns'].':pagehere';
+        $check = $INFO['namespace'].':pagehere';
         if(auth_quickaclcheck($check) < AUTH_EDIT) return;
 
         $R->doc .= '<form class="plugin_pagehere" action="'.wl($ID).'" method="GET">';

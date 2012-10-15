@@ -1,7 +1,7 @@
 base   pagehere
 author Andreas Gohr
 email  gohr@cosmocode.de
-date   2012-08-21
+date   2012-10-15
 name   pagehere plugin
 desc   Adds a form to create a new page in the current namespace
 url    http://www.cosmocode.de
