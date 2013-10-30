@@ -47,7 +47,8 @@ class syntax_plugin_pagehere extends DokuWiki_Syntax_Plugin {
         $check = $INFO['namespace'].':pagehere';
         if(auth_quickaclcheck($check) < AUTH_EDIT) return;
 
-        $R->doc .= '<form class="plugin_pagehere" action="'.wl($ID).'" method="GET">';
+        $R->doc .= '<form class="plugin_pagehere" action="'.script().'" method="GET">';
+        $R->doc .= '<input name="id" type="hidden" value="'.hsc($ID).'" />';
         $R->doc .= '<input name="pagehere" class="edit" type="text" id="page__here" />';
         $R->doc .= '<input type="submit" value="'.$this->getLang('submit').'" class="btn" />';
         $R->doc .= '</form>';

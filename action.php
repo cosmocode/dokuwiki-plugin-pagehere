@@ -25,8 +25,16 @@ class action_plugin_pagehere extends DokuWiki_Action_Plugin {
         if(!$_REQUEST['pagehere']) return;
 
         global $ID;
+        global $conf;
+
+        $page = cleanID($_REQUEST['pagehere']);
+        if(!$this->getConf('subns')){
+            $page = str_replace(':', $conf['sepchar'], $page);
+
+        }
+
         $ns = getNS($ID);
-        $newpage = cleanID($ns.':'.$_REQUEST['pagehere']);
+        $newpage = cleanID($ns.':'.$page);
 
         send_redirect(wl($newpage,array('do'=>'edit'),true,'&'));
     }
