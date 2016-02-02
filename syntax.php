@@ -33,12 +33,12 @@ class syntax_plugin_pagehere extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('{{pagehere}}',$mode,'plugin_pagehere');
     }
 
-    public function handle($match, $state, $pos, &$handler){
+    public function handle($match, $state, $pos, Doku_Handler $handler){
         $data = array();
         return $data;
     }
 
-    public function render($mode, &$R, $data) {
+    public function render($mode, Doku_Renderer $R, $data) {
         $R->info['cache'] = false;
         if($mode != 'xhtml') return false;
 
