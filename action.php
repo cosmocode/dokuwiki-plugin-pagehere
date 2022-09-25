@@ -22,7 +22,7 @@ class action_plugin_pagehere extends DokuWiki_Action_Plugin {
     }
 
     public function handle_dokuwiki_started(Doku_Event &$event, $param) {
-        if(!$_REQUEST['pagehere']) return;
+        if(!($_REQUEST['pagehere'] ?? false)) return;
 
         global $ID;
         global $conf;
