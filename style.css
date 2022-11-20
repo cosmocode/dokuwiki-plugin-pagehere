@@ -1,3 +1,7 @@
 form.page_here {
     display: inline;
 }
+
+.plugin_pagehere .btn {
+    margin-left: 5px;
+}
