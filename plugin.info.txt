@@ -1,7 +1,7 @@
 base   pagehere
 author Andreas Gohr
 email  dokuwiki@cosmocode.de
-date   2019-04-24
+date   2024-04-24
 name   pagehere plugin
 desc   Adds a form to create a new page in the current namespace
 url    http://www.dokuwiki.org/plugin:pagehere
